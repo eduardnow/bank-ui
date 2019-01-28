@@ -1,0 +1,11 @@
+html {
+  height: 100%;
+}
+
+h1 {
+  font-size: 2.0em;
+}
+
+.navbar {
+  justify-content: flex-start;
+}

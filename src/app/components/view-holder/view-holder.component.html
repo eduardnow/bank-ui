@@ -1,0 +1,30 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-10">
+      <h1>Detail Holders</h1>
+    </div>
+    <div class="col-2">
+      <a [routerLink]="['/']" routerLinkActive="router-link-active" class="btn btn-outline-primary" role="button"
+        aria-pressed="true">Back</a>
+    </div>
+  </div>
+
+  <p><strong>ID:</strong> {{ holder.id }}</p>
+
+  <p><strong>CUIT:</strong> {{ holder.cuit }}</p>
+
+  <div *ngIf="holder.naturalPerson">
+    <p><strong>Document:</strong> {{ holder.document }}</p>
+
+    <p><strong>First Name:</strong> {{ holder.firstName }}</p>
+
+    <p><strong>Last Name:</strong> {{ holder.lastName }}</p>
+  </div>
+
+  <div *ngIf="!holder.naturalPerson">
+      <p><strong>Business Name:</strong> {{ holder.businessName }}</p>
+
+      <p><strong>Foundation Year:</strong> {{ holder.foundationYear }}</p>
+  </div>
+</div>

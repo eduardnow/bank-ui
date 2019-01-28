@@ -1,0 +1,38 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-10">
+        <h1>Holders</h1>
+    </div>  
+    <div class="col-2">
+        <a [routerLink]="['/create']" routerLinkActive="router-link-active"  class="btn btn-outline-primary" role="button" aria-pressed="true">Create</a>
+    </div>
+  </div>
+  
+  <table class="table table-bordered table-inverse">
+    <tr>
+      <th>CUIT</th>
+      <th>Name / Business Name</th>
+      <th>Actions</th>
+    </tr>
+    <tr *ngFor="let holder of holders">
+      <td>
+        {{ holder.cuit }}
+      </td>
+      <td>
+        <p *ngIf="holder.naturalPerson">
+          {{ holder.firstName }} {{ holder.lastName }}
+        </p>
+
+        <p *ngIf="!holder.naturalPerson">
+          {{ holder.businessName }}
+        </p>
+      </td>
+      <td>
+        <a [routerLink]="['/', holder.id]">Details</a>
+        |
+        <a href="#" (click)= "delete(holder.id)">Remove</a>
+      </td>
+    </tr>
+  </table>
+</div>

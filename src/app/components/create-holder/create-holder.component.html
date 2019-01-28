@@ -1,0 +1,64 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-10">
+      <h1>Create Holders</h1>
+    </div>
+    <div class="col-2">
+      <a [routerLink]="['/']" routerLinkActive="router-link-active" class="btn btn-outline-primary" role="button"
+        aria-pressed="true">Back</a>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="row">
+    <div class="col-8">
+      <div class="card">
+        <div class="card-body">
+          <form [formGroup]="holderForm" (ngSubmit)="submitRegistration()" novalidate>
+            <div *ngIf="validMessage != ''">
+              <p class="alert alert-info">{{validMessage}}</p>
+            </div>
+      
+            <div class="form-group">
+              <label>CUIT</label>
+              <input type="text" class="form-control" formControlName="cuit" (keyup)="onKey($event)" required autofocus />
+            </div>
+      
+            <div *ngIf="isNaturalPerson(values)" formGroupName="natural" novalidate>
+              <div class="form-group">
+                <label>Document</label>
+                <input type="text" class="form-control" formControlName="document" required />
+              </div>
+      
+              <div class="form-group">
+                <label>First Name</label>
+                <input type="text" class="form-control" formControlName="firstName" required />
+              </div>
+      
+              <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" class="form-control" formControlName="lastName" required />
+              </div>
+            </div>
+      
+            <div *ngIf="isLegalPerson(values)" formGroupName="legal" novalidate>
+              <div class="form-group">
+                <label>Business Name</label>
+                <input type="text" class="form-control" formControlName="businessName" required />
+              </div>
+      
+              <div class="form-group">
+                <label>Foundation Year</label>
+                <input type="text" class="form-control" formControlName="foundationYear" required />
+              </div>
+            </div>
+      
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
